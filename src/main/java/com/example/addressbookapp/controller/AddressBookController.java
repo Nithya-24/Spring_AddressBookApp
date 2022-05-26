@@ -38,7 +38,6 @@ public class AddressBookController {
         Contact contact = addressbookservice.createContact(contactDTO);
         ResponseDTO response = new ResponseDTO("Created contact data for", contact);
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
-
     }
 
 
