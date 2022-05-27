@@ -6,19 +6,19 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 public @Data class AddressBookDTO {
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "First name is Invalid!!! ")
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "First name is Invalid ")
     @NotEmpty(message = "first name cannot be null")
     public String firstName;
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-z\\s]{2,}$", message = "Last name is Invalid!!! ")
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-z\\s]{2,}$", message = "Last name is Invalid ")
     @NotEmpty(message = "last name cannot be null")
     public String lastName;
-    @Pattern(regexp = "^[A-Za-z,.0-9\\s]{3,}$", message = "Address is Invalid!!! ")
+    @Pattern(regexp = "^[A-Za-z,.0-9\\s]{3,}$", message = "Address is Invalid ")
     @NotEmpty(message = "Address cannot be null")
     public String address;
-    @Pattern(regexp = "^[A-Za-z,.0-9\\s]{2,}$", message = "State is Invalid!!! ")
+    @Pattern(regexp = "^[A-Za-z,.0-9\\s]{2,}$", message = "State is Invalid")
     @NotEmpty(message = "State cannot be null")
     public String state;
-    @Pattern(regexp = "^[A-Za-z,.0-9]{3,}$", message = "City is Invalid!!! ")
+    @Pattern(regexp = "^[A-Za-z,.0-9]{3,}$", message = "City is Invalid")
     @NotEmpty(message = "City cannot be null")
     public String city;
     @Pattern(regexp = "^[0-9]{3}\\s{0,1}[0-9]{3}$")
