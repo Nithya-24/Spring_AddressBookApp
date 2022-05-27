@@ -17,12 +17,13 @@ public class AddressBookService implements IAddressBookService {
     @Override
     public List<Contact> getContact() {
 
-        return contactList;
+        return addressBookRepository.findAll();
     }
     @Override
     public Contact getContactById(int contactId) {
-        return contactList.stream().filter(contact -> contact.getContactId() == contactId).findFirst()
-                .orElseThrow(() -> new AddressBookException("Contact not found"));
+        return addressBookRepository.findById(contactId)
+                .orElseThrow(() -> new AddressBookException("Addressbook with ContactId" + contactId
+                        + " Doesn't Exists"));
     }
 
     @Override
@@ -37,21 +38,14 @@ public class AddressBookService implements IAddressBookService {
     @Override
     public Contact updateContact(int contactId, AddressBookDTO contactDTO) {
         Contact contact = this.getContactById(contactId);
-        contact.setFirstName(contactDTO.getFirstName());
-        contact.setLastName(contactDTO.getLastName());
-        contact.setAddress(contactDTO.getAddress());
-        contact.setState(contactDTO.getState());
-        contact.setCity(contactDTO.getCity());
-        contact.setZip(contactDTO.getZip());
-        contact.setPhone(contactDTO.getPhone());
-        contact.setEmail(contactDTO.getEmail());
-        contactList.set(contactId - 1, contact);
-        return contact;
+        contact.updateContact(contactDTO);
+        return addressBookRepository.save(contact);
     }
 
     @Override
     public void deleteContact(int contactId) {
-        contactList.remove(contactId-1);
+        Contact contact = this.getContactById(contactId);
+        addressBookRepository.delete(contact);
 
     }
 }
