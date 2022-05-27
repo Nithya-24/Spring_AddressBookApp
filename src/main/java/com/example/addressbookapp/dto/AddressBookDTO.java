@@ -15,7 +15,9 @@ public @Data class AddressBookDTO {
     @Pattern(regexp = "^[A-Za-z,.0-9\\s]{3,}$", message = "Address is Invalid!!! ")
     @NotEmpty(message = "Address cannot be null")
     public String address;
+    @NotEmpty(message = "State cannot be null")
     public String state;
+    @NotEmpty(message = "city cannot be null")
     public String city;
     @Pattern(regexp = "^[0-9]{3}\\s{0,1}[0-9]{3}$")
     public String zip;

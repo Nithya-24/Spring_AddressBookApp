@@ -1,6 +1,7 @@
 package com.example.addressbookapp.service;
 
 import com.example.addressbookapp.dto.AddressBookDTO;
+import com.example.addressbookapp.exception.AddressBookException;
 import com.example.addressbookapp.model.Contact;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ public class AddressBookService implements IAddressBookService {
 
         return contactList;
     }
-
     @Override
     public Contact getContactById(int contactId) {
-        return contactList.get(contactId-1);
+        return contactList.stream().filter(contact -> contact.getContactId() == contactId).findFirst()
+                .orElseThrow(() -> new AddressBookException("Contact not found"));
     }
 
     @Override
