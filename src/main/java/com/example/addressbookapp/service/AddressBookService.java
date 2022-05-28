@@ -13,7 +13,7 @@ import java.util.List;
 public class AddressBookService implements IAddressBookService {
     @Autowired
     private AddressBookRepository addressBookRepository;
-    List<Contact> contactList = new ArrayList<>();
+
     @Override
     public List<Contact> getContact() {
 
@@ -26,15 +26,20 @@ public class AddressBookService implements IAddressBookService {
                         + " Doesn't Exists"));
     }
     @Override
-    public List<Contact> getContactByCity(String city) {
-        return addressBookRepository.findContactListByCity(city);
+    public List<Contact> sortByCity() {
+        return addressBookRepository.sortByCity();
+    }
+
+    @Override
+    public List<Contact> sortByState() {
+        return addressBookRepository.sortByState();
     }
 
     @Override
     public Contact createContact(AddressBookDTO contactDTO) {
 
-        Contact contactData = new Contact(contactList.size()+1, contactDTO);
-        contactList.add(contactData);
+        Contact contactData = new Contact(contactDTO);
+
         return addressBookRepository.save(contactData);
 
     }

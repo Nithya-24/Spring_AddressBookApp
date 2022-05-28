@@ -29,11 +29,8 @@ public @Data class Contact {
     @Column(name = "email")
     private String email;
 
-
-
-    public Contact(int contactId, AddressBookDTO contactDTO) {
+    public Contact(AddressBookDTO contactDTO) {
         super();
-        this.contactId = contactId;
         this.firstName = contactDTO.firstName;
         this.lastName = contactDTO.lastName;
         this.address = contactDTO.address;
@@ -48,11 +45,11 @@ public @Data class Contact {
 
     }
 
-    @Override
-    public String toString() {
-        return "Contact [contactId=" + contactId + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
-                + address + ", state=" + state + ", city=" + city + ", zip=" + zip + ", phone=" + phone + ", email=" + email + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "Contact [contactId=" + contactId + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
+//                + address + ", state=" + state + ", city=" + city + ", zip=" + zip + ", phone=" + phone + ", email=" + email + "]";
+//    }
 
     public void updateContact(AddressBookDTO contactDTO) {
         this.firstName = contactDTO.firstName;
